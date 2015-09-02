@@ -75,25 +75,25 @@ jQuery插件开发方式主要有三种：
   同样，需要一个变量的时候，毫无规则地定义一些散落在代码各处的变量
 * 保护好默认参数
     * 示例代码a
-```javascript  
-var defaults = {
-    'color': 'red',
-    'fontSize': '12px'
-};
-var settings = $.extend(defaults, options);
-```
+    ```javascript  
+    var defaults = {
+        'color': 'red',
+        'fontSize': '12px'
+    };
+    var settings = $.extend(defaults, options);
+    ```
     * 示例代码b
-```javascript
-var defaults = {
-    'color': 'red',
-    'fontSize': '12px'
-};
-var settings = $.extend({},defaults, options);//将一个空对象做为第一个参数
-```  
-  示例代码a中调用extend时会将defaults的值改变，这样不好，因为它作为插件因有的一些东西应该维持原样，另外就是如果你<br>
-  在后续代码中还要使用这些默认值的话，当你再次访问它时它已经被用户传进来的参数更改了<br>
-  示例代码b中将一个新的空对象做为$.extend的第一个参数，defaults和用户传递的参数对象紧随其后，这样做的好处是所有值<br>
-  被合并到这个空对象上，保护了插件里面的默认值
+    ```javascript
+    var defaults = {
+        'color': 'red',
+        'fontSize': '12px'
+    };
+    var settings = $.extend({},defaults, options);//将一个空对象做为第一个参数
+    ```  
+    示例代码a中调用extend时会将defaults的值改变，这样不好，因为它作为插件因有的一些东西应该维持原样，另外就是如果你<br>
+    在后续代码中还要使用这些默认值的话，当你再次访问它时它已经被用户传进来的参数更改了<br>
+    示例代码b中将一个新的空对象做为$.extend的第一个参数，defaults和用户传递的参数对象紧随其后，这样做的好处是所有值<br>
+    被合并到这个空对象上，保护了插件里面的默认值
 * 让插件接收参数<br>
   一个强劲的插件是可以让使用者随意定制的，这要求我们提供在编写插件时就要考虑得全面些，尽量提供合适的参数
 * 支持链式调用<br>
