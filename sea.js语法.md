@@ -20,18 +20,19 @@
  + **语法：**`require.async(id, callback?)`
  + **定义：**`require.async 方法用来在模块内部异步加载模块，并在加载完成后执行指定回调。callback 参数可选`
  + **例子：**
- 
-		define(function(require, exports, module) {
-		  	// 异步加载一个模块，在加载完成时，执行回调
-		  require.async('./b', function(b) {
-		    b.doSomething();
-		  });
-		  // 异步加载多个模块，在加载完成时，执行回调
-		  require.async(['./c', './d'], function(c, d) {
-		    c.doSomething();
-		    d.doSomething();
-		  });
-		 });
+
+			define(function(require, exports, module) {
+				// 异步加载一个模块，在加载完成时，执行回调
+				require.async('./b', function(b) {
+					b.doSomething();
+				});
+				// 异步加载多个模块，在加载完成时，执行回调
+				require.async(['./c', './d'], function(c, d) {
+					c.doSomething();
+					d.doSomething();
+				});
+			 });
+		 
  + **注意：**require 是同步往下执行，require.async 则是异步回调执行。require.async 一般用来加载可延迟异步加载的模块。
 - require.resolve 
  +** 语法：**require.resolve(id)
