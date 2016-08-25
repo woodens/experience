@@ -56,8 +56,6 @@
     }
 说明：现在chrome浏览器已经取消最小字体限制
 
----
-
 ### 垂直居中
 .outer{
     display: table;
@@ -69,7 +67,6 @@
 ### 水平居中
 - text-align:center;
 - margin:0 auto;
--
 
 
 ### 整体居中
