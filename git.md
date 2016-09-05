@@ -18,7 +18,6 @@
     git branch -d host         //删除分支host
     git reset --hard [HEAD^]|[HEAD^^]|[HEAD~100]|[commit_id]  //把当前版本回退到<上一个版本>|<上上个版本>|<往上100个版本>|<相应版本号>
     ```
-
 #### 常见问题
 - 上传已有项目到git仓库
 
