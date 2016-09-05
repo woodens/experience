@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>标签的样式</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        body{font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,STHeiti,"Microsoft Yahei",sans-serif;-webkit-font-smoothing: antialiased;}
+        .block{width: 100%;min-height: 30px}
+        .inline{width: 30px;height: 30px}
+        .inline-block{width: 80px;height: 30px}
+    </style>
+    <base href="http://www.runoob.com/images/" target="_blank">
+</head>
+<body>
+    <h1 class="block">h1</h1>
+    <h2 class="block">h2</h2>
+    <h3 class="block">h3</h3>
+    <h4 class="block">h4</h4>
+    <h5 class="block">h5</h5>
+    <h6 class="block">h6</h6>
+    <div class="block">div</div>
+    <p class="block">p</p>
+    <ul class="block" style="height: 90px">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <ol class="block" style="height: 90px">
+        <li>ol1</li>
+        <li>ol2</li>
+        <li>ol3</li>
+    </ol>
+    <address class="block">
+        Written by <a href="mailto:webmaster@example.com">Jon Doe</a>.<br>
+        Visit us at:<br>
+        Example.com<br>
+        Box 564, Disneyland<br>
+        USA
+    </address>
+    <hr>
+    <h3>以下内容IE9+及以上</h3>
+    <article class="block">
+        <h1>文章标题</h1>
+        <p>文章主题内容</p>
+    </article>
+    <aside class="block">
+        <h4>Epcot Center</h4>
+        <p>The Epcot Center is a theme park in Disney World, Florida.</p>
+    </aside>
+    <header class="block"></header>
+    <nav></nav>
+    <footer></footer>
+    <blockquote cite="http://www.worldwildlife.org/who/index.html">
+        For 50 years, WWF has been protecting the future of nature. The world's leading conservation organization,
+        WWF works in 100 countries and is supported by 1.2 million members in the United States and close to 5 million globally.
+        一个摘自另一个源的块引用
+    </blockquote>
+    <cite>
+        定义一套引用
+    </cite>
+
+    <span class="inline">span</span><br>
+    <a class="inline" href="">a</a><br>
+    <img class="inline" src="" alt="img"><br>
+    <img src="" width="145" height="126" alt="img+map+area组合,均为行内元素" usemap="#planetmap">
+    <map name="planetmap">
+        <area shape="rect" coords="0,0,82,126" alt="Sun" href="">
+        <area shape="circle" coords="90,58,3" alt="Mercury" href="">
+        <area shape="circle" coords="124,58,8" alt="Venus" href="">
+    </map><br>
+
+    <em class="inline">em</em><br>
+    <b>b文本粗体（不建议用）</b><br>
+    <a href="logo.png">runoob.com base相对</a><br>
+    <hr>
+    <h3>默认inline-block元素</h3>
+    <button class="inline-block">按钮</button>
+    <hr>
+    <h3>表格</h3>
+    <table border="1">
+        <caption>表格标题</caption>
+        <tr>
+            <th>表头1</th>
+            <th>表头2</th>
+        </tr>
+        <tr>
+            <td>内容1</td>
+            <td>内容2</td>
+        </tr>
+        <tr>
+            <td>内容1</td>
+            <td>内容2</td>
+        </tr>
+
+    </table>
+</body>
+</html>
+
