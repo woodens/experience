@@ -34,6 +34,14 @@
         <li>ol2</li>
         <li>ol3</li>
     </ol>
+    <dl>
+        <dt>定义项目/名字1</dt>
+        <dd>描述列表中的项目/名字进行描述</dd>
+        <dt>定义项目/名字2</dt>
+        <dd>描述列表中的项目/名字进行描述</dd>
+        <dt>定义项目/名字3</dt>
+        <dd>描述列表中的项目/名字进行描述</dd>
+    </dl>
     <address class="block">
         Written by <a href="mailto:webmaster@example.com">Jon Doe</a>.<br>
         Visit us at:<br>
@@ -51,18 +59,29 @@
         <h4>Epcot Center</h4>
         <p>The Epcot Center is a theme park in Disney World, Florida.</p>
     </aside>
-    <header class="block"></header>
-    <nav></nav>
-    <footer></footer>
+    <header class="block">页头或者文章头部</header>
+    <nav class="block"></nav>
+    <footer class="block">页脚或者文章底部</footer>
+    <section class="block">文档中的某个区域</section>
     <blockquote cite="http://www.worldwildlife.org/who/index.html">
         For 50 years, WWF has been protecting the future of nature. The world's leading conservation organization,
         WWF works in 100 countries and is supported by 1.2 million members in the United States and close to 5 million globally.
         一个摘自另一个源的块引用
     </blockquote>
-    <cite>
+    <cite class="block">
         定义一套引用
     </cite>
+    <pre class="block" style="width: 300px;height: 40px">
+        文本 输入的样式保留   包含空格
+    </pre>
+    <form class="block" action="">
+        表单
+    </form>
 
+
+
+    <hr>
+    <h3>默认inline</h3>
     <span class="inline">span</span><br>
     <a class="inline" href="">a</a><br>
     <img class="inline" src="" alt="img"><br>
@@ -72,13 +91,25 @@
         <area shape="circle" coords="90,58,3" alt="Mercury" href="">
         <area shape="circle" coords="124,58,8" alt="Venus" href="">
     </map><br>
-
     <em class="inline">em</em><br>
     <b>b文本粗体（不建议用）</b><br>
     <a href="logo.png">runoob.com base相对</a><br>
+    <q class="inline">短的引用</q><br>
     <hr>
     <h3>默认inline-block元素</h3>
+    <input type="text" value="文本">
+    <textarea name=""cols="30" rows="10" class="inline-block">说明</textarea>
+    <select name="" class="inline-block">
+        <optgroup label="optgroup为block">
+            <option>option为block</option>
+            <option>option为block</option>
+            <option>option为block</option>
+        </optgroup>
+    </select>
     <button class="inline-block">按钮</button>
+    下载进度：IE10及其他浏览器
+    <progress value="22" max="100"></progress>
+
     <hr>
     <h3>表格</h3>
     <table border="1">
@@ -97,6 +128,12 @@
         </tr>
 
     </table>
+
+    <hr>
+    <h3>其他（没有设置display属性）</h3>
+    <p>H<sub>2</sub>O</p>
+    <p>x<sup>2</sup>=x*x</p>
+
 </body>
 </html>
 
