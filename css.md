@@ -219,6 +219,18 @@
     </html>
 
 两种布局的对比
-- 1. 两种布局方式都是把主列放在文档流最前面，使主列优先加载；
-- 2. 两者在实现上的相同点在于都让三列浮动，然后通过负外边距形成三列布局；
-- 3. 两种布局方式的不同在于如何处理中间主列的位置：圣杯布局是利用父容器的左右内边距定位；双飞翼布局是把主列嵌套在div后利用主列的左右外边距定位。
+1. 两种布局方式都是把主列放在文档流最前面，使主列优先加载；
+2. 两者在实现上的相同点在于都让三列浮动，然后通过负外边距形成三列布局；
+3. 两种布局方式的不同在于如何处理中间主列的位置：圣杯布局是利用父容器的左右内边距定位；双飞翼布局是把主列嵌套在div后利用主列的左右外边距定位。
+
+### 默认的样式
+html,body,div,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,p,table,th,td,fieldset,
+form,input,button,textarea,hr,blockquote,pre{margin:0;padding:0;}
+h1,h2,h3,h4,h5,h6{font-size:100%; font-weight:bold;line-height:1em;}
+ul,ol,dl{list-style-type:none;}
+fieldset,img{border:none;}
+table{border-collapse:collapse;table-layout:fixed;empty-cells:show;}
+address,caption,cite,code,dfn,th{font-style:normal;font-weight:normal;}
+ins{text-decoration:underline;}
+del{text-decoration:line-through;}
+q:before,q:after{content:"";}

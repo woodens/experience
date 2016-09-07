@@ -1,0 +1,509 @@
+<html><head>
+	<meta charset="utf-8">
+	<title>CSS 选择器演示</title>
+	<meta name="keywords" content="前端开发,Web标准,css选择器,css选择符,css selectors">
+	<meta name="description" content="通过本页面直观的理解 CSS 选择器的作用区域。">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<style>
+		html,body,h1,h2,h3,p,fieldset,legend,ul,ol,li,dl,dt,dd{margin:0;padding:0;}
+		ul,ol,dl{list-style:none;}
+		body{padding:20px 0;color:#333;font-size:12px;line-height:1.7;background:#333;}
+
+		.clearfix{zoom:1;}
+		.clearfix:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}
+
+		.wrap{position:relative;width:900px;margin:0 auto;padding:20px 50px;border-radius:5px;background:#fff;}
+		.doctip{position:absolute;top:20px;right:50px;color:#999;}
+		h1{margin-bottom:10px;font:bold 36px/60px Arial,"\5FAE\8F6F\96C5\9ED1";}
+		h1 .site{display:inline-block;margin-left:20px;font-size:18px;color:#417bbb;text-decoration:none;}
+
+		/* 选择器列表 */
+		#selectors{float:left;width:280px;padding:10px 20px;border-radius:5px;background:#000;color:#eee;font-family:Consolas,Monaco,Courier,"Courier New";}
+		#selectors dl{margin-bottom:10px;}
+		#selectors dt{color:#666;font:bold 14px/30px Arial,"\5FAE\8F6F\96C5\9ED1";}
+		#selectors dd{padding-left:14px;border-radius:3px 3px 0 3px;line-height:24px;cursor:pointer;}
+		#selectors dd:hover{background:#666;}
+		#selectors dd a{display:block;color:#eee;text-decoration:none;}
+		#selectors dd .intro{display:none;position:absolute;top:20px;left:120px;width:140px;padding:5px 10px 10px 10px;border-radius:0 0 3px 3px;background:#ff6;color:#333;line-height:18px;}
+		#selectors dd .tip{color:#777;}
+
+		#selectors dd.n{position:relative;background:#ff6;color:#d33;cursor:auto;}
+		#selectors dd.n a{color:#d33;}
+		#selectors dd.n .intro{display:block;}
+
+		/* 示例 */
+		#example{float:right;width:560px;}
+		#example h1,
+		#example h2,
+		#example h3{margin:5px 0;font:bold 36px/50px Arial,"\5FAE\8F6F\96C5\9ED1";}
+		#example h2{font-size:24px;line-height:30px;}
+		#example h3{font-size:14px;line-height:24px;}
+
+		#example ul,
+		#example ol,
+		#example dl,
+		#example div,
+		#example .talk{margin:5px 0;padding-top:20px;}
+		#example p,
+		#example li,
+		#example dt,
+		#example dd{margin:2px 0;}
+
+		#example h1,
+		#example h2,
+		#example h3,
+		#example ol,
+		#example li,
+		#example dl,
+		#example dt,
+		#example dd,
+		#example p,
+		#example div{position:relative;padding-left:40px;}
+		#example h1:before,
+		#example h2:before,
+		#example h3:before,
+		#example ol:before,
+		#example li:before,
+		#example dl:before,
+		#example dt:before,
+		#example dd:before,
+		#example p:before,
+		#example div:before,
+		#example .talk:after{position:absolute;top:0;left:5px;color:#999;font-weight:normal;font-size:12px;font-family:Consolas,Monaco,Courier,"Courier New";}
+		#example h1:before{content:"<h1>";}
+		#example h2:before{content:"<h2>";}
+		#example h3:before{content:"<h3>";}
+		#example ol:before{content:"<ol>";}
+		#example li:before{content:"<li>";}
+		#example dt:before{content:"<dt>";}
+		#example dd:before{content:"<dd>";}
+		#example p:before{content:"<p>";}
+		#example div:before{content:"<div>";}
+		#example #catalogue:before{content:"<div id=\"catalogue\">";}
+		#example ol.list:before{content:"<ol class=\"list\">";}
+		#example dl.list:before{content:"<dl class=\"list\">";}
+		#example ol.list:lang(zh):before{content:"<ol class=\"list\" lang=\"zh\">";}
+		#example ol.only:before{content:"<ol class=\"only\">";}
+		#example .season_2:before{content:"<div class=\"season_2\">";}
+		#example .article:before{content:"<div class=\"article\">";}
+		#example .talk{padding-bottom:20px;}
+		#example .talk:after{top:auto;bottom:0;}
+		#example .talk:before{content:"<p class=\"talk\">";}
+		#example .talk:after{content:"</p>"}
+
+		#example a{padding:5px;color:#d33;text-decoration:none;}
+		#example h3:empty{height:24px;}
+		.talk:first-letter{font-size:18px;font-weight:bold;}
+		.talk:first-line{background:#eee;font-family:Consolas,Monaco,Courier,"Courier New";}
+		.talk:before,
+		.talk:after{padding:0 0.5em;color:#f60;border-radius:2px;background:#999;}
+		.talk::selection{color:#fff;background:#f60;}
+
+		/* 高亮选中结果 */
+		.ex_all *,
+		.ex_element li,
+		.ex_id #catalogue,
+		.ex_class .list,
+		.ex_find #catalogue h3,
+		.ex_children #catalogue > h3,
+		.ex_next h1 + h2,
+		.ex_next_all h1 ~ h2,
+		.ex_first_child h3:first-child{color:#fc3;border-radius:6px;background:#666;}
+
+		.ex_last_child h3:last-child,
+		.ex_only_child .list dt:only-child,
+		.ex_nth_child h3:nth-child(2n),
+		.ex_nth_last_child h3:nth-last-child(2n),
+		.ex_first_of_type h3:first-of-type,
+		.ex_last_of_type h3:last-of-type,
+		.ex_only_of_type .list dt:only-of-type,
+		.ex_nth_of_type h3:nth-of-type(2n),
+		.ex_nth_last_of_type h3:nth-last-of-type(2n){color:#fc3;border-radius:6px;background:#666;}
+
+		.ex_lang .list:lang(zh){color:#fc3;border-radius:6px;background:#666;}
+
+		.ex_not ol:not(.list),
+		.ex_empty h3:empty,
+		.ex_target div:target{color:#fc3;border-radius:6px;background:#666;}
+
+		.ex_attr a[class],
+		.ex_attr_equal a[target="_blank"],
+		.ex_attr_start a[href^="https"],
+		.ex_attr_end a[href$=".jpg"],
+		.ex_attr_like a[href*="baike"],
+		.ex_attr_con a[class|="abc"],
+		.ex_attr_space a[class~="abc"]{color:#fc3;border-radius:6px;background:#666;}
+	</style>
+</head>
+<body>
+<div class="wrap clearfix">
+	<h1>CSS 选择器演示</h1>
+	<div class="doctip"><p>点击左侧列表中的选择器，即可在右侧中预览到选择器匹配到的内容。</p><p>如果没有任何匹配，说明所使用的浏览器不支持该选择器。♪( ´▽｀)</p></div>
+
+	<div id="selectors">
+		<dl>
+			<dt>元素选择器</dt>
+			<dd data-val="all">*
+				<div class="intro">
+					<strong>通配选择器</strong>
+					<p>匹配所有元素。</p>
+				</div>
+			</dd>
+			<dd data-val="element">li
+				<div class="intro">
+					<strong>类型选择器</strong>
+					<p>匹配标签为 li 的元素。</p>
+				</div>
+			</dd>
+			<dd data-val="id">#catalogue
+				<div class="intro">
+					<strong>id 选择器</strong>
+					<p>匹配 id 属性值等于 catalogue 的元素。</p>
+				</div>
+			</dd>
+			<dd data-val="class">.list
+				<div class="intro">
+					<strong>class 选择器</strong>
+					<p>匹配 class 属性值包含 list 的元素。</p>
+				</div>
+			</dd>
+		</dl>
+		<dl>
+			<dt>关系选择器</dt>
+			<dd data-val="find">#catalogue h3
+				<div class="intro">
+					<strong>后代选择器</strong>
+					<p>匹配 #catalogue 元素内所有的 h3 元素。</p>
+				</div>
+			</dd>
+			<dd data-val="children">#catalogue &gt; h3
+				<div class="intro">
+					<strong>子元素选择器</strong>
+					<p>匹配 #catalogue 元素子级的 h3 元素。</p>
+					<p class="tip">* 不支持：IE6</p>
+				</div>
+			</dd>
+			<dd data-val="next">h1 + h2
+				<div class="intro">
+					<strong>相邻选择器</strong>
+					<p>匹配 h1 元素之后紧跟的 h2 元素。</p>
+					<p class="tip">* 不支持：IE6</p>
+				</div>
+			</dd>
+			<dd data-val="next_all">h1 ~ h2
+				<div class="intro">
+					<strong>兄弟选择</strong>
+					<p>匹配 h1 元素之后所有的 h2 元素。</p>
+					<p class="tip">* 不支持：IE6</p>
+				</div>
+			</dd>
+		</dl>
+		<dl>
+			<dt>伪类选择器</dt>
+			<dd data-val="first_child">h3:first-child
+				<div class="intro">
+					<p>匹配同辈的所有元素中，第一个元素并且是 h3 的元素。</p>
+					<p class="tip">* 不支持：IE6</p>
+				</div>
+			</dd>
+			<dd data-val="last_child">h3:last-child
+				<div class="intro">
+					<p>匹配同辈的所有元素中，最后一个元素并且是 h3 的元素。</p>
+					<p class="tip">* 不支持：IE6-8</p>
+				</div>
+			</dd>
+			<dd data-val="first_of_type">h3:first-of-type
+				<div class="intro">
+					<p>匹配同辈的 h3 元素中，第一个 h3 元素。</p>
+					<p class="tip">* 不支持：IE6-8</p>
+				</div>
+			</dd>
+			<dd data-val="last_of_type">h3:last-of-type
+				<div class="intro">
+					<p>匹配同辈的 h3 元素中，最后一个 h3 元素。</p>
+					<p class="tip">* 不支持：IE6-8</p>
+				</div>
+			</dd>
+			<dd data-val="nth_child">h3:nth-child(2n)
+				<div class="intro">
+					<p>匹配同辈的所有元素中，第 2n 个元素并且是 h3 的元素。</p>
+					<p class="tip">* 不支持：IE6-8</p>
+				</div>
+			</dd>
+			<dd data-val="nth_last_child">h3:nth-last-child(2n)
+				<div class="intro">
+					<p>匹配同辈的所有元素中，倒数第 2n 个元素并且是 h3 的元素。</p>
+					<p class="tip">* 不支持：IE6-8</p>
+				</div>
+			</dd>
+			<dd data-val="nth_of_type">h3:nth-of-type(2n)
+				<div class="intro">
+					<p>匹配同辈的 h3 元素中，第 2n 个 h3 元素。</p>
+					<p class="tip">* 不支持：IE6-8</p>
+				</div>
+			</dd>
+			<dd data-val="nth_last_of_type">h3:nth-last-of-type(2n)
+				<div class="intro">
+					<p>匹配同辈的 h3 元素中，倒数第 2n 个 h3 元素。</p>
+					<p class="tip">* 不支持：IE6-8</p>
+				</div>
+			</dd>
+			<dd data-val="only_child">.list dt:only-child
+				<div class="intro">
+					<p>匹配同辈的所有元素中，只有一个元素并且是 dt 的元素。</p>
+					<p class="tip">* 不支持：IE6-8</p>
+				</div>
+			</dd>
+			<dd data-val="only_of_type">.list dt:only-of-type
+				<div class="intro">
+					<p>匹配同辈的 dt 元素中，只有一个 dt 元素时的 dt 元素。</p>
+					<p class="tip">* 不支持：IE6-8</p>
+				</div>
+			</dd>
+			<dd data-val="lang">.list:lang(zh)
+				<div class="intro">
+					<p>匹配 lang 属性值等于 zh 的 .list 元素</p>
+					<p class="tip">* 不支持：IE6-7</p>
+				</div>
+			</dd>
+			<dd data-val="not">ol:not(.list)
+				<div class="intro">
+					<p>匹配 ol 元素中，不包含 .list 选择器规则的元素。</p>
+					<p class="tip">* 不支持：IE6-8</p>
+				</div>
+			</dd>
+			<dd data-val="empty">h3:empty
+				<div class="intro">
+					<p>匹配不包含任何元素及内容的 h3 元素。</p>
+					<p class="tip">* 不支持：IE6-8</p>
+				</div>
+			</dd>
+			<dd data-val="target"><a href="#catalogue">div:target</a>
+				<div class="intro">
+					<p>匹配 URL 井号(#)部分指向的 div 元素。</p>
+					<p class="tip">* 不支持：IE6-8</p>
+				</div>
+			</dd>
+			<dd>E:link
+				<div class="intro">
+					<p>a 元素的链接地址在未被访问前的样式。</p>
+					<p class="tip">* 不进行演示</p>
+				</div>
+			</dd>
+			<dd>E:visited
+				<div class="intro">
+					<p>a 元素的链接地址已被访问过的样式。</p>
+					<p class="tip">* 不进行演示</p>
+				</div>
+			</dd>
+			<dd>E:hover
+				<div class="intro">
+					<p>鼠标悬停在 E 元素上时的样式</p>
+					<p class="tip">* IE6以下 只支持 a 元素的 hover 样式</p>
+					<p class="tip">* 不进行演示</p>
+				</div>
+			</dd>
+			<dd>E:active
+				<div class="intro">
+					<p>E 元素在被激活（在鼠标点击与释放之间发生的事件）时的样式。</p>
+					<p class="tip">* IE7以下 只支持 a 元素的 active 样式</p>
+					<p class="tip">* 不进行演示</p>
+				</div>
+			</dd>
+			<dd>E:focus
+				<div class="intro">
+					<p>E 元素在获得焦点时的样式。</p>
+					<p class="tip">* 不支持：IE6-7</p>
+					<p class="tip">* 不进行演示</p>
+				</div>
+			</dd>
+			<dd>E:root
+				<div class="intro">
+					<p>匹配 E 元素在文档的根元素，在 HTML 中，根元素永远是 HTML。</p>
+					<p class="tip">* 不支持：IE6-8</p>
+					<p class="tip">* 不进行演示</p>
+				</div>
+			</dd>
+			<dd>E:checked
+				<div class="intro">
+					<p>匹配选中状态的 E 元素。（用于 input type 为 radio 与 checkbox）</p>
+					<p class="tip">* 不支持：IE6-8</p>
+					<p class="tip">* 不进行演示</p>
+				</div>
+			</dd>
+			<dd>E:enabled
+				<div class="intro">
+					<p>匹配可以正常使用的 E 元素。</p>
+					<p class="tip">* 不支持：IE6-8</p>
+					<p class="tip">* 不进行演示</p>
+				</div>
+			</dd>
+			<dd>E:disabled
+				<div class="intro">
+					<p>匹配被禁止使用的 E 元素。（disabled="disabled"）</p>
+					<p class="tip">* 不支持：IE6-8</p>
+					<p class="tip">* 不进行演示</p>
+				</div>
+			</dd>
+		</dl>
+		<dl>
+			<dt>伪元素选择器</dt>
+			<dd>.article:first-letter
+				<div class="intro">
+					<p>设置 .talk 元素第一个字符的样式。</p>
+					<p class="tip">例：右侧首字大号字</p>
+					<p class="tip">* IE6 下选择符与花括号之间需有空格或换行</p>
+				</div></dd>
+			<dd>.talk:first-line
+				<div class="intro">
+					<p>设置 .talk 元素第一行的样式。</p>
+					<p class="tip">例：右侧首行有浅灰色背景色</p>
+					<p class="tip">* IE6 下选择符与花括号之间需有空格或换行</p>
+				</div></dd>
+			<dd>.talk:before
+				<div class="intro">
+					<p>设置 .talk 元素前的内容及样式。（与 content 属性一起使用）</p>
+					<p class="tip">例：右侧的&lt;p class="talk"&gt;有深灰色背景色</p>
+					<p class="tip">* 不支持：IE6-7</p>
+				</div></dd>
+			<dd>.talk:after
+				<div class="intro">
+					<p>设置 .talk 元素后的内容及样式。（与 content 属性一起使用）</p>
+					<p class="tip">例：右侧的&lt;/p&gt;有深灰色背景色</p>
+					<p class="tip">* 不支持：IE6-7</p>
+				</div></dd>
+			<dd>.talk::selection
+				<div class="intro">
+					<p>设置 .talk 元素被选择时的颜色。</p>
+					<p class="tip">例：用鼠标选中右侧 .talk 内的文字试试</p>
+					<p class="tip">* 不支持：IE6-8</p>
+				</div>
+			</dd>
+		</dl>
+		<dl>
+			<dt>属性选择器</dt>
+			<dd data-val="attr">a[class]
+				<div class="intro">
+					<p>匹配具有 class 属性值的 a 的元素。</p>
+					<p class="tip">* 不支持：IE6</p>
+				</div>
+			</dd>
+			<dd data-val="attr_equal">a[target="_blank"]
+				<div class="intro">
+					<p>匹配 target 属性值等于 _blank 的 a 元素。</p>
+					<p class="tip">* 不支持：IE6</p>
+				</div>
+			</dd>
+			<dd data-val="attr_start">a[href^="https"]
+				<div class="intro">
+					<p>匹配 href 属性值以 https 开头的 a 元素。</p>
+					<p class="tip">* 不支持：IE6</p>
+				</div></dd>
+			<dd data-val="attr_end">a[href$=".jpg"]
+				<div class="intro">
+					<p>匹配 href 属性值以 .jpg 结尾的 a 元素。</p>
+					<p class="tip">* 不支持：IE6</p>
+				</div>
+			</dd>
+			<dd data-val="attr_like">a[href*="baike"]
+				<div class="intro">
+					<p>匹配 href 属性值包含 baike 的 a 元素。</p>
+					<p class="tip">* 不支持：IE6</p>
+				</div></dd>
+			<dd data-val="attr_con">a[class|="abc"]
+				<div class="intro">
+					<p>匹配 class 属性值以 abc 开头并跟着连接符“-”分割字符串 的 a 元素。例：</p>
+					<p class="tip">color-<br>color-red<br>color-green-blue</p>
+					<p class="tip">* 不支持：IE6</p>
+				</div>
+			</dd>
+			<dd data-val="attr_space">a[class~="abc"]
+				<div class="intro">
+					<p>匹配 class 属性值以空格为分隔符，其中有一个等于 abc 的 a 元素。</p>
+					<p class="tip">* 不支持：IE6</p>
+				</div>
+			</dd>
+		</dl>
+	</div>
+
+	<div id="example">
+		<h1>盗墓笔记</h1>
+		<h2>目录</h2>
+		<div id="catalogue">
+			<h3>七星鲁王</h3>
+			<ol id="asd" class="list">
+				<li>第一章 血尸</li>
+				<li>第二章 五十年后</li>
+				<li>第三章 瓜子庙</li>
+			</ol>
+			<h3>怒海潜沙</h3>
+			<ol class="list" lang="zh">
+				<li>第一章 蛇眉铜鱼</li>
+				<li>第二章 双层墓墙</li>
+				<li>第三章 大风暴</li>
+			</ol>
+			<h3>云顶天宫</h3>
+			<ol class="only">
+				<li>第一章 五圣雪山</li>
+			</ol>
+			<dl class="list">
+				<dt>蛇沼鬼城</dt>
+				<dd>第一章 三叔的醒来</dd>
+				<dd>第二章 往事不堪回首</dd>
+			</dl>
+			<dl class="list">
+				<dt>谜海归巢</dt>
+			</dl>
+			<div class="season_2">
+				<h3>阴山古楼</h3>
+				<h3>邛笼石影</h3>
+				<h3>大结局</h3>
+				<h3></h3>
+			</div>
+		</div>
+
+		<h2>试读</h2>
+		<h3>七星鲁王 第一章 血尸</h3>
+		<div class="article">
+			<p lang="zh">50年前，<a class="n" target="_blank" href="http://baike.baidu.cn/view/7127.htm">长沙</a>镖子岭。</p>
+		</div>
+		<div class="article">
+			<p>四个<a class="abc-" target="_blank" href="http://baike.baidu.com/view/957319.htm">土夫子</a>正蹲在一个土丘上，所有人都不说话，直勾勾地盯着地上那把<a class="n abc" target="_blank" href="http://baike.baidu.com/view/184898.htm">洛阳铲</a>。</p>
+			<p><a class="n abc o" target="_blank" href="http://pic20.nipic.com/20120331/6608733_102336860000_2.jpg">铲子</a>头上带着刚从地下带出的旧土，离奇的是，这一坏土正不停地向外渗着鲜红的液体，就像刚刚在<a target="_blank" href="https://itunes.apple.com/cn/app/xue-ye-xing-zi-fenno-shuo/id449825135">血液</a>里蘸过一样。</p>
+		</div>
+		<div class="article">
+			<p>“这下子麻烦大喽。”老烟头把他的旱烟在地上敲了敲，接着道，“下面是个<a class="abc-q" target="_blank" href="http://t1.baidu.com/it/u=3864323642,2058213236&amp;fm=21&amp;gp=0.jpg">血尸</a>嘎，弄不好我们这点儿当当，都要撂在下面噢。”</p>
+			<p class="talk">“下不下去喃？要得要不得，一句话，莫七里八里的！”独眼的小伙子说，“你说你个老人家腿脚不方便，就莫下去了，我和我弟两个下去，管他什么东西，直接给他来一梭子。”</p>
+			<p class="talk">老烟头不怒反笑，对边上的一个大胡子说：“你屋里二伢子海式撩天的，指不定什么时候就给翻盖子了，你得多教育教育，咱这买卖，不是有只匣子炮就能喔荷西天。”</p>
+			<p class="talk">那大胡子瞪了那年轻人一眼：“你崽子，怎么这么跟老太爷讲话，老太爷淘土的时候你他妈的还在你娘肚子里吃屎咧。”</p>
+			<p class="talk">“我咋说……说错了，老祖宗不说了嘛，那血尸就是个好东西，下面宝贝肯定不少，不下去，走嘎一炉锅汤。”</p>
+			<p class="talk">“你还敢顶嘴！”大胡子举手就打，被老烟头用烟枪挡了回去。</p>
+			<p class="talk">“打不得，你做伢那时候不还是一样，这叫<a class="abc-m-f" target="_blank" href="http://www.iciba.com/%E4%B8%8A%E6%A2%81%E4%B8%8D%E6%AD%A3%E4%B8%8B%E6%A2%81%E6%AD%AA">上梁不正下梁歪</a>！”</p>
+			<p class="talk">那独眼的小伙子看他老爸被数落了，低下头偷笑，老烟头咳嗽了一声，又敲了那独眼的少年一记头棍：“你笑个啥？碰到血尸，可大可小，上次你二公就是在洛阳挖到这东西，结果现在还疯疯癫癫的，都不知道着了什么道。等一下我先下去，你跟在我后面，二伢子你带个土耗子殿后，三伢子你就别下去了，四个人都下去，想退都来不及退，你就拉着土耗子的尾巴，我们在里面一吆喝你就把东西拉出来。”</p>
+		</div>
+	</div>
+</div>
+
+
+<script src="http://apps.bdimg.com/libs/jquery/1.8.3/jquery.min.js"></script>
+<script>
+	(function(){
+		var selectors = $('#selectors');
+		var example = $('#example');
+
+		selectors.delegate('dd', 'click', function(){
+			var _this = $(this);
+
+			selectors.find('dd').removeClass('n');
+			_this.addClass('n');
+
+			if (_this.data('val')) {
+				example.attr('class', 'ex_' + _this.data('val'));
+			} else {
+				example.attr('class', '');
+			};
+		});
+	})();
+</script>
+
+</body></html>
