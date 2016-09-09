@@ -223,7 +223,122 @@
 2. 两者在实现上的相同点在于都让三列浮动，然后通过负外边距形成三列布局；
 3. 两种布局方式的不同在于如何处理中间主列的位置：圣杯布局是利用父容器的左右内边距定位；双飞翼布局是把主列嵌套在div后利用主列的左右外边距定位。
 
+### 企业DIV使用频率高的命名方法
+- 网页内容类
+    - 标题: title
+    - 摘要: summary
+    - 箭头： arrow
+    - 商标： label
+    - 网站标志： logo
+    - 转角/圆角： corner
+    - 横幅广告： banner
+    - 子菜单： subMenu
+    - 搜索： search
+    - 搜索框： searchBox
+    - 登录： login
+    - 登录条：loginbar
+    - 工具条： toolbar
+    - 下拉： drop
+    - 标签页： tab
+    - 当前的： current
+    - 列表： list
+    - 滚动： scroll
+    - 服务： service
+    - 提示信息： msg
+    - 热点：hot
+    - 新闻： news
+    - 小技巧： tips
+    - 下载： download
+    - 栏目标题： title
+    - 热点： hot
+    - 加入： joinus
+    - 注册： regsiter
+    - 指南： guide
+    - 友情链接： friendlink
+    - 状态： status
+    - 版权： copyright
+    - 按钮： btn
+    - 合作伙伴： partner
+    - 投票： vote
+    - 左右中：left right center
+- 页面结构
+    - 容器: container
+    - 页头：header
+    - 内容：content/container
+    - 页面主体：main
+    - 页尾：footer
+    - 导航：nav
+    - 侧栏：sidebar
+    - 栏目：column
+    - 页面外围控制整体布局宽度：wrapper
+    - 左右中：left right center
+- 导航
+    - 导航：nav
+    - 主导航：mainbav
+    - 子导航：subnav
+    - 顶导航：topnav
+    - 边导航：sidebar
+    - 左导航：leftsidebar
+    - 右导航：rightsidebar
+    - 菜单：menu
+    - 子菜单：submenu
+    - 标题: title
+    - 摘要: summary
+- 功能
+    - 标志：logo
+    - 广告：banner
+    - 登陆：login
+    - 登录条：loginbar
+    - 注册：regsiter
+    - 搜索：search
+    - 功能区：shop
+    - 标题：title
+    - 加入：joinus
+    - 状态：status
+    - 按钮：btn
+    - 滚动：scroll
+    - 标签页：tab
+    - 文章列表：list
+    - 提示信息：msg
+    - 当前的: current
+    - 小技巧：tips
+    - 图标: icon
+    - 注释：note
+    - 指南：guild
+    - 服务：service
+    - 热点：hot
+    - 新闻：news
+    - 下载：download
+    - 投票：vote
+    - 合作伙伴：partner
+    - 友情链接：link
+    - 版权：copyright
+    
+### 推荐的 CSS 书写顺序
+- 显示属性
+    - display
+    - list-style
+    - position
+    - float
+    - clear
+- 自身属性
+    - width
+    - height
+    - margin
+    - padding
+    - border
+    - background
+- 文本属性
+    - color
+    - font
+    - text-decoration
+    - text-align
+    - vertical-align
+    - white-space
+    - other text
+    - content
 ### 默认的样式
+```
 html,body,div,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,p,table,th,td,fieldset,
 form,input,button,textarea,hr,blockquote,pre{margin:0;padding:0;}
 h1,h2,h3,h4,h5,h6{font-size:100%; font-weight:bold;line-height:1em;}
@@ -234,3 +349,4 @@ address,caption,cite,code,dfn,th{font-style:normal;font-weight:normal;}
 ins{text-decoration:underline;}
 del{text-decoration:line-through;}
 q:before,q:after{content:"";}
+```
