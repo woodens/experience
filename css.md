@@ -59,32 +59,108 @@
 - 设置浮动
     float: left;
 
-### 垂直居中
-.outer{
-    display: table;
-}
-.inner{
-  display: table-cell;
-  vertical-align: middle;
-}
 ### 水平居中
-- text-align:center;
-- margin:0 auto;
+- 行内元素解决方案
 
+```
+行内元素的父级为块级元素或包含display:block样式只需设置text-align:center;
+```
 
-### 整体居中
+- 块状元素解决方案
+```
+margin:10px auto;
+```
 
+- 多个块状元素解决方案
 
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    top:400px;
-    height: 400px;
+```
+父级设置text-align:center;
+块级元素设置:display:inline-block;
+```
+
+- 多个块状元素解决方案 (使用flexbox布局实现)
+```
+父级设置 display:flex;justify-content:center;
+```
+
+### 垂直居中
+- 单行的行内元素解决方案
+```
+.parent {
+    height: 200px;
+}
+/* 以下代码中，将a元素的height和line-height设置的和父元素一样高度即可实现垂直居中 */
+a {
+    height: 200px;
+    line-height:200px; 
+ }
+```    
+
+- 多行的行内元素解决方案
+    > 定义需要居中的父容器元素display:table-cell;vertical-align:middle;
+```
+.parent {
     width: 300px;
-    margin-top: -200px;
-    margin-left:-150px;
+    height: 300px;
+    /* 以下属性垂直居中 */
+    display: table-cell;
+    vertical-align:middle;
+}
+```
+    
+- 已知高度的块状元素解决方案
+```
+.item{
+    height:100px;
+    top:50%;
+    margin-top:-50px;
+    position:absolute;
+    padding:0;
+}
+```
 
+- 未知高度的块状元素解决方案
+```
+.item{
+    top: 50%;
+    position: absolute;
+    transform: translateY(-50%);  /* 使用css3的transform来实现 */
+}
+```
+
+### 水平垂直居中
+- 已知高度和宽度的元素解决方案1
+
+        .item{
+            position: absolute;
+            margin:auto;
+            left:0;
+            top:0;
+            right:0;
+            bottom:0;
+        }
+
+- 已知高度和宽度的元素解决方案2
+
+        .item{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            height: 400px;
+            width: 300px;
+            margin-top: -200px;
+            margin-left:-150px;
+        }
+- 未知高度和宽度元素解决方案
+
+        .item{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);  /* 使用css3的transform来实现 */
+        }
 ### 圣杯布局
+``` html
     <!DOCTYPE html>
     <html>
     <head>
@@ -149,9 +225,10 @@
     </body>
 
     </html>
+```
 
 ### 双飞翼布局
-
+``` html
     <!DOCTYPE html>
     <html>
     <head>
@@ -217,6 +294,7 @@
         </div>
     </body>
     </html>
+```
 
 两种布局的对比
 1. 两种布局方式都是把主列放在文档流最前面，使主列优先加载；
@@ -337,16 +415,11 @@
     - white-space
     - other text
     - content
-### 默认的样式
-```
-html,body,div,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,p,table,th,td,fieldset,
-form,input,button,textarea,hr,blockquote,pre{margin:0;padding:0;}
-h1,h2,h3,h4,h5,h6{font-size:100%; font-weight:bold;line-height:1em;}
-ul,ol,dl{list-style-type:none;}
-fieldset,img{border:none;}
-table{border-collapse:collapse;table-layout:fixed;empty-cells:show;}
-address,caption,cite,code,dfn,th{font-style:normal;font-weight:normal;}
-ins{text-decoration:underline;}
-del{text-decoration:line-through;}
-q:before,q:after{content:"";}
-```
+### 属性的继承性
+
+- **不可继承的：** display、margin、border、padding、background、height、min-height、max-height、width、min-width、max-width、overflow、position、left、right、top、bottom、z-index、float、clear、table-layout、vertical-align、page-break-after、page-bread-before和unicode-bidi。
+- **所有元素可继承：** visibility和cursor。
+- **内联元素可继承：** letter-spacing、word-spacing、white-space、line-height、color、font、font-family、font-size、font-style、font-variant、font-weight、text-decoration、text-transform、direction。
+- **终端块状元素可继承：** text-indent和text-align。
+- **列表元素可继承：** list-style、list-style-type、list-style-position、list-style-image。
+- **表格元素可继承：** border-collapse。

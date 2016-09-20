@@ -5,4 +5,8 @@
 .section {
   width: 100%; }
 
+.block-align-center {
+  display: flex;
+  justify-content: center; }
+
 /*# sourceMappingURL=test.css.map */
