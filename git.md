@@ -34,3 +34,5 @@
 - 同一个项目上传到多个git仓库
 
     > 在.git目录中的config文件中添加多个url=https://xxx.com/xx.git的路径即可
+- fatal: Unable to create 'v:/path/to/files/.git/index.lock': File exists.
+    > 命令删除sudo rm -f ./.git/index.lock
