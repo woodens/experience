@@ -1,3 +1,10 @@
+#### 命令
+- mvn compile
+- mvn test
+- mvn clean
+- mvn package
+
+
 #### 常见问题
 - maven GroupId 和ArtifactId通常填什么
     ```
@@ -12,4 +19,9 @@
     
     <version>${spring.version}</version>
     ```
-    
+- 安装jar包到本地仓库
+
+>1、cd命令进入到jar文件所在目录，不然直接执行会报错
+>2、输入以下命令
+    mvn install:install-file -DgroupId=org.wltea.analyzer -DartifactId=IKAnalyzer -Dversion=5.0 -Dpackaging=jar -Dfile=IKAnalyzer-5.0.jar
+      -Dfile=后面是文件路径
