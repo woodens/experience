@@ -4,7 +4,25 @@
 - mvn clean
 - mvn package
 
-
+#### 知识点
+- 标准目录结构：
+    - src
+    - main
+        - bin 脚本库
+        - java java源代码文件
+        - resources 资源库，会自动复制到classes目录里
+        - filters 资源过滤文件
+        - assembly 组件的描述配置（如何打包）
+        - config 配置文件
+        - webapp web应用的目录。WEB-INF、css、js等
+    - test
+        - java 单元测试java源代码文件
+        - resources 测试需要用的资源库
+        - filters 测试资源过滤库
+    - site Site（一些文档）
+    - target
+    - LICENSE.txt Project’s license
+    - README.txt Project’s readme
 #### 常见问题
 - maven GroupId 和ArtifactId通常填什么
     ```
