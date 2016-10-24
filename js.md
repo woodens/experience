@@ -112,4 +112,7 @@
     - 返回值不同 concat返回合并后的数组;push返回新数组的长度
     - push 遇到数组参数时，把整个数组参数作为一个元素；而 concat 则是拆开数组参数，一个元素一个元素地加进去
     - push 直接改变当前数组；concat 不改变当前数组
+- e.target 与 e.currentTarget区别
+    - e.target指触发事件的dom，不包含通过冒泡传递事件的dom元素；
+      e.currentTarget指触发当前事件的dom，包含通过冒泡传递事件的dom元素
    
