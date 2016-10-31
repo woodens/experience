@@ -423,3 +423,41 @@ a {
 - **终端块状元素可继承：** text-indent和text-align。
 - **列表元素可继承：** list-style、list-style-type、list-style-position、list-style-image。
 - **表格元素可继承：** border-collapse。
+
+### 常规流
+1 块级格式化上下文（BFC）
+![Mou icon](1.png)
+1.1 定义
+> BFC是一个独立的渲染区域，BFC里面的元素不论怎么翻江倒海，使劲折腾都不会影响到外面的元素。在BFC中，每一个元素左外边与包含块的左边相接触（对于从右到左的格式化，右外边接触右边）， 即使存在浮动也是如此。
+
+1.2 触发方式
+- 浮动（float值不为none）
+- 绝对定位（position值不为relative和static）
+- display值为table-cell，table-caption，inline-block，flex，inline-flex中任何一个
+- overflow值不为visible
+
+1.3 应用
+- 阻止外边距折叠
+- 包含浮动元素
+- 防止文字环绕
+
+2 行内格式化上下文（IFC）
+
+2.1 内容区域（content area）
+   它是一种围绕文字看不见的盒子，它的大小与font-size大小相关。可近似将鼠标选中文字的区域看做内容区域。
+
+2.2 行内框（inline boxes）
+行内框不会让内容成块显示，而是排成行。如果文字外含inline水平的标签（span，a，em等），则属于行内框，如果是光秃秃的文字，则属于匿名行内框。
+2.3 行框（line boxes）
+每一行就是一个行框，每个行框又是由一个一个行内框组成的。
+2.4 包含盒子（containing box）
+p标签所在的包含盒子，由一行一行的行框组成。注意与p元素的块不是一回事。
+
+#### 常见问题
+- 图片底部有间隙怎么处理？
+    - 图片块状化（无基线对齐了）
+    `img {display: block;}`
+    - 图片底线对齐
+    `img {vertical-align: bottom;}`
+    - 行高足够小（导致基线上移）
+    `.box {line-height: 0;}`
