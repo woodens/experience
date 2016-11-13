@@ -12,3 +12,8 @@ props: ['myMessage'],
   template: '#child'
 });
 ```
+
+- vue-devtools使用
+1. 下载vue-devtools插件
+2. 扩展中设置url地址可打开
+3. 在调用vue的页面在引入vue.js之后js设置`Vue.config.devtools = true;`
