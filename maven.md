@@ -43,3 +43,14 @@
 >2、输入以下命令
     mvn install:install-file -DgroupId=org.wltea.analyzer -DartifactId=IKAnalyzer -Dversion=5.0 -Dpackaging=jar -Dfile=IKAnalyzer-5.0.jar
       -Dfile=后面是文件路径
+      
+#### 国内较快的仓库
+- 阿里
+```
+    <mirror>
+      <id>alimaven</id>
+      <name>aliyun maven</name>
+      <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+      <mirrorOf>central</mirrorOf>        
+    </mirror>
+```
