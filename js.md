@@ -1,4 +1,14 @@
 ### 1.数据类型
+- 六种 原型 数据类型:
+    - Boolean.  布尔值，true 和 false.
+    - null. 一个表明 null 值的特殊关键字。 JavaScript 是大小写敏感的，因此 null 与 Null、NULL或其他变量完全不同。
+    - undefined.  变量未定义时的属性。
+    - Number.  表示数字，例如： 42 或者 3.14159。
+    - String.  表示字符串，例如："Howdy"
+    - Symbol ( 在 ECMAScript 6 中新添加的类型).。一种数据类型，它的实例是唯一且不可改变的。
+- 以及 Object 对象
+
+Objects 和 functions 是本语言的其他两个基本要素。你可以将对象视为存放值的命名容器，而将函数视为你的应用程序能够执行的过程(procedures)。
 
 #### 1.1 typeof方法可以查看基本的变量类型：
 
@@ -14,6 +24,14 @@
 空     | null       | object
 非数字 | NaN        | number
 日期   | Date       | object
+```
+注意： typeof Math        Object
+      typeof Function    function
+      typeof String      function
+      typeof Number      function
+      typeof Date        function
+      ...
+```
 
 ### 1.2.1 数据类型分类方式
 - 在 JavaScript 中有 5 中不同的数据类型：
@@ -32,7 +50,7 @@
     - undefined
 
 
-### 1.2.2 数据类型的另一种分
+### 1.2.2 数据类型的另一种分类
 
 - 基本类型
     - Undefined
