@@ -36,3 +36,9 @@
     > 在.git目录中的config文件中添加多个url=https://xxx.com/xx.git的路径即可
 - fatal: Unable to create 'v:/path/to/files/.git/index.lock': File exists.
     > 命令删除sudo rm -f ./.git/index.lock
+     
+- 如果你只关心最新版的代码，而不关心之前的历史信息，怎么下载最快
+    - 浅复制
+         `git clone --depth=1 https://github.com/xxx/xxx.git`
+         如果后面需要获取完整历史信息可以使用命令`git fetch --unshallow`
+    - 直接在github上下载打包好的zip下载
