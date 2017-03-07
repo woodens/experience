@@ -127,10 +127,10 @@ semver 格式：`主版本号.次版本号.修订号。`版本号递增规则如
 命令行：npm install webpack --save-dev
 
 ## npm使用
-## npm init
+### npm init
 使用```npm init ```初始化一个空项目是个好习惯
-## npm install
-###参数说明
+### npm install
+#### 参数说明
 - --save 简化 -S  将类似```"express": "^4.14.0"``` 写入 dependencies
 - --save-dev 简化 -D 将类似```"express": "^4.14.0"``` 写入 devDependencies
 - --save --save-exct   将版本信息放准确的进dependencies
@@ -140,10 +140,32 @@ semver 格式：`主版本号.次版本号.修订号。`版本号递增规则如
     npm config set save-exact true
     ```
     这样每次 npm i xxx --save 的时候会锁定依赖的版本号，相当于加了 --save-exact 参数
-## npm scripts
-## npm shrinkwrap
+
+### npm scripts
+可以将需要执行的命令简化为简单地单词直接执行```npm run XXX```进行操作
+### npm shrinkwrap
 虽然save-exact 可以锁定版本号，但是因为锁定的是最外层的版本号，而里层依赖的模块package.json有可能写的是依赖*从而造成意外发生
+
 npm shrinkwrap可以在当前目录生成npm-shrinkwrap.json，里面包含了通过 node_modules 计算出的模块的依赖树及版本。
+
 只要目录下有 npm-shrinkwrap.json 则运行 npm install 的时候会优先使用 npm-shrinkwrap.json 进行安装，没有则使用 package.json 进行安装。
 
 npm shrinwrap 只会生成dependencies的依赖，不会生成devDependencies的
+
+## supervisor
+在开发过程中，每次修改代码保存后，我们都需要重新启动程序才能看到效果。使用supervisor可以解决这个繁琐的问题
+
+### 安装
+```
+npm install -g supervisor
+```
+### 使用
+```
+supervisor harmony index
+```
+supervisor会监听当前目录下node和js后缀的文件，当这些文件发生改变的时候，supervisor会自动重启程序
+
+## req的属性
+- `req.query`: 解析后的 url 中的 querystring，如 `?name=haha`，`req.query` 的值为 `{name: 'haha'}`
+- `req.params`: 解析 url 中的占位符，如 `/:name`，访问 `/haha`，req.params 的值为 `{name: 'haha'}`
+- `req.body`: 解析后请求体，需使用相关的模块，如 [body-parser](https://www.npmjs.com/package/body-parser)，请求体为 `{"name": "haha"}`，则 `req.body` 为 `{name: 'haha'}`
