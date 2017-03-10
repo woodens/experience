@@ -1,10 +1,17 @@
 ##技术栈
 - 框架
- - [express](http://www.expressjs.com.cn)
- - [koa](http://koajs.com)
- - [sails](http://sailsjs.com/)
-
-
+    - [express](http://www.expressjs.com.cn)
+    - [koa](http://koajs.com)
+    - [sails](http://sailsjs.com/)
+- 工具 
+    - [pm2](https://www.npmjs.com/package/pm2)进程守护工具，在生产环境中进行自动重启、日志记录、错误预警等
+    - [winston](https://www.npmjs.com/package/winston)和[express-winston](https://www.npmjs.com/package/express-winston)记录日志
+    - [mongolass](https://github.com/mongolass/mongolass)比官方提供的mongodb驱动好用
+    - [config-lite](https://www.npmjs.com/package/config-lite)轻量的读取配置文件的模块
+    - [express-session](https://www.npmjs.com/package/express-session)会话中间件
+    - [connect-mongo](https://www.npmjs.com/package/connect-mongo)将session存储于mongodb
+    - [connect-redis](https://www.npmjs.com/package/connect-mongo)将session存储于redis
+    - [supervisor](https://www.npmjs.com/package/supervisor)开发过程中自动重启服务器
 ## Nodejs总结
 ### 1. 文件
 - 1.1 阻塞执行
