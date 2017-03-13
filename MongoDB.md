@@ -1,5 +1,7 @@
 ##启动
-mongod.exe --dbpath c:\data\db
+- windows `mongod.exe --dbpath c:\data\db`
+- mac `mongod --config /usr/local/etc/mongod.conf`
+
 ##参数
 |命令  | 说明|
 |:----| ----|
