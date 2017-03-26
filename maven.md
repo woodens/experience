@@ -54,3 +54,10 @@
       <mirrorOf>central</mirrorOf>        
     </mirror>
 ```
+
+
+
+## 知识点总结
+1. 怎么将jar包安装到本地库
+2. 怎么卸载本地库中的jar包
+3. mvn如何打包
