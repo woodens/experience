@@ -170,3 +170,24 @@ supervisor会监听当前目录下node和js后缀的文件，当这些文件发�
 - `req.query`: 解析后的 url 中的 querystring，如 `?name=haha`，`req.query` 的值为 `{name: 'haha'}`
 - `req.params`: 解析 url 中的占位符，如 `/:name`，访问 `/haha`，req.params 的值为 `{name: 'haha'}`
 - `req.body`: 解析后请求体，需使用相关的模块，如 [body-parser](https://www.npmjs.com/package/body-parser)，请求体为 `{"name": "haha"}`，则 `req.body` 为 `{name: 'haha'}`
+
+
+
+### nodejs基础
+
+- 模块
+ 
+![](https://img3.doubanio.com/view/ark_works_pic/common-largeshow/public/199732571.jpg)
+  
+> 模块是将文件的函数变量组成一个部分，并暴露给程序一些函数或变量以便使用。
+ 	当返回的函数或变量不止一个的情况下，通过设定`exports`对象的属性来返回；当返回的函数或变量只有一个的情况下，则可以设定`module.exports`属性来返回。
+ 
+- require(nodejs为数不多的同步I/O操作) 
+- exports与module.exports区别
+
+> `exports`是`module.exports`的全局引用，是一个空对象，真正导出的是`module.exports`，所以返回为对象的情况下需要使用`module.exports=Object`
+  
+- nodejs搜寻模块的规则
+![](https://img1.doubanio.com/view/ark_works_pic/common-largeshow/public/199732927.jpg)
+
+`当前目录` -> `node_modules目录` -> `父目录的node_modules目录` -> `NODE_PATH目录`
