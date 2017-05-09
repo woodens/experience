@@ -25,6 +25,20 @@
     git show v0.9              //显示标签为v0.9的标签信息及提交信息
     git reset --hard [HEAD^]|[HEAD^^]|[HEAD~100]|[commit_id]  //把当前版本回退到<上一个版本>|<上上个版本>|<往上100个版本>|<相应版本号>
     ```
+
+#### 知识点总结
+1. 安装
+	- mac安装 
+	- windows安装
+	- Linux安装
+	 
+2. 基础操作
+	- `git init`
+	- `git clone url <reportname>`
+	- `git add *.file`
+	- `git commit -m "<message>"`
+3. 
+
 #### 常见问题
 - 上传已有项目到git仓库
 
@@ -52,14 +66,14 @@
 
 - 如何管理发布版本
 
-    > 发布版本就是在git上打上标签
+    ###### 发布版本就是在git上打上标签
 
-    - `git tag <tagname> <commitId>`   用于创建新标签，默认打在head上,也可打在commitId上
-    - `git tag -a <tagname> -m "blabla..."` 指定标签信息
-    - `git tag-s <tagname> -m "blabla..."`  使用PGP签名标签，也就是签名不可伪造
-    - `git tag`  可以查看所有标签
-    - `git show <tagname>`   显示tagname的标签信息
-    - `git push origin <tagname>` 推送一个本地标签
-    - `git push origin --tags` 推送全部未推送过的本地标签
-    - `git tag -d <tagname>` 删除本地标签
-    - `git push origin :refs/tags/<tagname>` 删除一个远程标签  (若是要删除一个远程的标签，需要先删除本地标签才能删除远程标签)
+    + `git tag <tagname> <commitId>`   用于创建新标签，默认打在head上,也可打在commitId上
+    + `git tag -a <tagname> -m "blabla..."` 指定标签信息
+    + `git tag-s <tagname> -m "blabla..."`  使用PGP签名标签，也就是签名不可伪造
+    + `git tag`  可以查看所有标签
+    + `git show <tagname>`   显示tagname的标签信息
+    + `git push origin <tagname>` 推送一个本地标签
+    + `git push origin --tags` 推送全部未推送过的本地标签
+    + `git tag -d <tagname>` 删除本地标签
+    + `git push origin :refs/tags/<tagname>` 删除一个远程标签  (若是要删除一个远程的标签，需要先删除本地标签才能删除远程标签)
