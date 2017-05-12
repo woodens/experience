@@ -5,7 +5,6 @@
 ### 使用socketio
 - 安装 `npm i socketio`
 - 服务端代码
-
 	```javascript
 	var fs = require('fs');
 	var server = require('http').createServer(function(req,res){

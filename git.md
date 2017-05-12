@@ -1,30 +1,56 @@
 #### 使用
-- 常见命令
+ - 常见命令
+ 
+	- git add <file>             //把文件添加到本地仓库（即将该文件纳入git管理）
+	- git add .                  //将当前文件目录中的所有文件添加到索引，放在暂存区
+	- git commit -m '说明'        //将文件提交到本地仓库
+	- git commit -a -m '说明'     //将文件保存到暂存区并提交到本地仓库
+	
+	--- 
+	
+	- git log <--pretty=oneline> //查看提交历史<每次的记录显示在一行>
+	- git reflog                 //查看命令历史（每次执行的命令，是回到过去后项再回来的药箱）
+	
+    ---
 
-    ```
-    git add <file>             //把文件添加到本地仓库（即将该文件纳入git管理）
-    git add .                  //将当前文件目录中的所有文件添加到索引
-    git commit -m '说明'        //将文件提交到本地仓库
-    git log <--pretty=oneline> //查看提交历史<每次的记录显示在一行>
-    git reflog                 //查看命令历史
-    git push origin master     //把本地源码库push到Github上
-    git pull origin master     //从Github上pull到本地源码库
-    git config --list          //查看配置信息
-    git status                 //查看项目状态信息
-    git branch                 //查看项目分支
-    git checkout -b host       //添加一个名为host的分支
-    git checkout master        //切换到主干
-    git merge host             //合并分支host到主干
-    git branch -d host         //删除分支host
-    git tag                    //查看所有标签
-    git tag v1.0               //给分支打个标签
-    git tag v0.9 634565        //给commitId为634565的提交打上标签
-    git tag -a v0.9 -m "version 0.9 released" 34567  //给commitId为34567的提交打上说明文字为"version 0.9 released"的v0.9的标签
-        - `-a`  标签名称
-        - `-m`  标签说明
-    git show v0.9              //显示标签为v0.9的标签信息及提交信息
-    git reset --hard [HEAD^]|[HEAD^^]|[HEAD~100]|[commit_id]  //把当前版本回退到<上一个版本>|<上上个版本>|<往上100个版本>|<相应版本号>
-    ```
+    - git checkout -- <file>     //撤销修改（已经放到暂存区的回退到最近一次add的状态，未放到暂存区的回退到最近一次commit的状态）
+
+
+	---
+	
+	- git push origin master     //把本地源码库push到Github上
+	- git pull origin master     //从Github上pull到本地源码库
+	
+	---
+	
+	- git config --list          //查看配置信息
+	- git status                 //查看项目状态信息
+	- git branch                 //查看项目分支
+	
+	--- 
+	
+	- git checkout -b host       //添加一个名为host的分支
+	- git checkout master        //切换到主干
+	
+	---
+	
+	- git merge host             //合并分支host到主干
+	- git branch -d host         //删除分支host
+	
+	---
+	
+	- git tag                    //查看所有标签
+	- git tag v1.0               //给分支打个标签
+	- git tag v0.9 634565        //给commitId为634565的提交打上标签
+	- git tag -a v0.9 -m "version 0.9 released" 34567  //给commitId为34567的提交打上说明文字为"version 0.9 released"的v0.9的标签
+	    - `-a`  标签名称
+	    - `-m`  标签说明
+	- git show v0.9
+	     //显示标签为v0.9的标签信息及提交信息
+
+	---
+
+	- git reset --hard [HEAD^]|[HEAD^^]|[HEAD~100]|[commit_id]  //把当前版本回退到<上一个版本>|<上上个版本>|<往上100个版本>|<相应版本号>
 
 #### 知识点总结
 1. 安装
@@ -35,9 +61,15 @@
 2. 基础操作
 	- `git init`
 	- `git clone url <reportname>`
-	- `git add *.file`
-	- `git commit -m "<message>"`
-3. 
+	- `git add *.file`               跟踪新文件/暂存已修改的文件
+	- `git commit -m "<message>"`    提交更新（提交之前必须要git add文件）
+	- `git commit -a -m "<message>"` 跳过使用暂存区，直接提交
+	
+3. 不常见操作
+	- `git mv file_from file_to` 重命名文件
+	- `git rm file`
+	- `git rm -f file`		  删除之前修改过并放在暂存区的文件
+	- `git rm --cached file` 为达到想保存在磁盘，但是不想git跟踪版本文件的目的
 
 #### 常见问题
 - 上传已有项目到git仓库
