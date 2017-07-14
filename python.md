@@ -25,6 +25,7 @@ Python中默认的编码格式是 ASCII 格式，在没修改编码格式时无�
 # -*- coding: UTF-8 -*-
 ``` 
 
+在Python 3.x版本中，把'xxx'和u'xxx'统一成Unicode编码，即写不写前缀u都是一样的，而以字节形式表示的字符串则必须加上b前缀：b'xxx'
 
 #python基础
 ## 注释
@@ -228,6 +229,12 @@ if x:
    else:                  # 循环的 else 部分
       print num, '是一个质数'
 	```
+	将循环的值保存在集合中
+	
+	```
+	user_ids = [user_course.user.id for user_course in user_courses]
+	```
+
 2. while循环 
 	
 	只要满足条件就会一直执行下去
@@ -417,7 +424,180 @@ for n in fib(6):
 - `import module1[, module2[,... moduleN]`
 - `from module import name1,name2`
 
+### 命名空间及作用域
+
+要给函数内的全局变量赋值，必须使用global语句
+
+```python
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+ 
+Money = 2000
+def AddMoney():
+   # 全局变量赋值
+   global Money
+   Money = Money + 1
+ 
+```
+
 ### Python中的包
 
 包是一个分层次的文件目录结构，它定义了一个由模块及子包，和子包下的子包等组成的 Python 的应用环境。<br>
 简单来说，包就是文件夹，但该文件夹下必须存在 __init__.py 文件, 该文件的内容可以为空。__int__.py用于标识当前文件夹是一个包。
+
+## Python 异常处理
+
+当Python脚本发生异常时我们需要捕获处理它，否则程序会终止执行
+
+### 异常处理
+
+try...except语句
+
+```python
+try:
+<语句>        #运行别的代码
+except：
+<语句>        #如果在try部份引发了任何异常
+except <名字>：
+<语句>        #如果在try部份引发了'name'异常
+except (Exception1[, Exception2[,...ExceptionN]]])：
+<语句>        #如果在try部份引发了任何上面一个异常
+except <名字>，<数据>:
+<语句>        #如果引发了'name'异常，获得附加的数据
+else:
+<语句>        #如果没有异常发生
+```
+
+try-finally语句
+
+```python
+try:
+<语句>
+finally:
+<语句>    #退出try时总会执行
+```
+
+### 异常的参数
+
+语法：
+
+```python
+try:
+    正常的操作
+   ......................
+except ExceptionType, Argument:
+    你可以在这输出 Argument 的值...
+```
+
+例子：
+
+```python
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+
+# 定义函数
+def temp_convert(var):
+    try:
+        return int(var)
+    except ValueError, Argument:
+        print "参数没有包含数字\n", Argument
+
+# 调用函数
+temp_convert("xyz");
+```
+
+### 触发异常
+
+我们可以使用raise语句自己触发异常
+raise语法格式如下：
+
+```python
+raise [Exception [, args [, traceback]]]
+```
+参数说明
+
+- 语句中Exception是异常的类型（例如，NameError）参数是一个异常参数值。该参数是可选的，如果不提供，异常的参数是"None"。
+- 最后一个参数是可选的（在实践中很少使用），如果存在，是跟踪异常对象。
+
+例子：
+
+```python
+def functionName( level ):
+	try:
+		if level < 1:
+			raise Exception("Invalid level!", level)
+			# 触发异常后，后面的代码就不会再执行
+			...
+	except "Invalid level!":
+		# 触发自定义异常    
+	else:
+	    # 其余代码
+    
+```
+
+### 用户自定义异常
+
+> 异常应该是典型的继承自Exception类，通过直接或间接的方式。
+
+例子
+
+```python
+class Networkerror(RuntimeError):
+    def __init__(self, arg):
+        self.args = arg
+...
+# 在你定义以上类后，你可以触发该异常
+try:
+    raise Networkerror("Bad hostname")
+except Networkerror,e:
+    print e.args
+
+
+```
+
+## 面向对象
+
+以`_`开头的变量是protected，只能本身和子类进行访问，不能 `from module import *`<br>
+以`__`开头的变量或方法都是私有的，只能本身进行访问
+
+### 构造函数
+
+```
+__init__ ( self [,args...] )
+```
+### 属性
+
+- 私有属性
+	以`__`开头的属性
+- 类属性
+
+	内置属性
+	- `__dict__` : 类的属性（包含一个字典，由类的数据属性组成）
+	- `__doc__` :类的文档字符串
+	- `__name__`: 类名
+	- `__module__`: 类定义所在的模块（类的全名是'`__main__.className`'，如果类位于一个导入模块mymod中，那么className.__module__ 等于 mymod）
+	- `__bases__` : 类的所有父类构成元素（包含了一个由所有父类组成的元组）
+
+	
+### 方法
+
+内置的方法
+
+- `__init__ ( self [,args...] )`  构造函数
+- `__del__( self )`  删除对象
+- `__repr__( self )` 转换为解释器可以读取的形式
+- `	__str__( self )` 用于将值转换为利于人阅读的形式
+- `__cmp__ ( self, x )`  对象比较
+
+## Python使用requirements.txt安装类库
+- 生成安装所需类库
+
+    ```
+    pip freeze > requirements.txt
+    ```
+- 使用requirements.txt安装类库
+
+    ```
+    pip install -r requirements.txt
+    ```  
+
