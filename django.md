@@ -210,7 +210,7 @@ projectName
 	然后在view中继承
 	
 	```
-	class CourseAddView(LoginRequiredMixin, view):
+	class CourseAddView(LoginRequiredMixin, View):
 		...
 	``` 
 	
@@ -294,5 +294,12 @@ STATICFILES_DIRS = (                    # 静态文件夹
     
     在每个app的apps.py的class后加入 `verbose_name='中文app名'`
     在`__init__.py`文件中加入`default_app_config = '<app packagename>.apps.<app>Config'`
+
+
+
+### 常见问题
+- 使用from django.views.generic import View创建post方法时怎么略过csrf_token验证
+
+ > 解决办法： 在class上加注解@method_decorator(csrf_exempt, name='dispatch')
 
 

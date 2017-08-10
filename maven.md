@@ -61,3 +61,39 @@
 1. 怎么将jar包安装到本地库
 2. 怎么卸载本地库中的jar包
 3. mvn如何打包
+4. 将maven项目打包成可执行文件
+    
+    - 使用 maven-assembly-plugin 插件进行打包
+    
+    ```
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.XXX.MainClass</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    ```
+    然后执行`mvn package assembly:single`进行打包即可，会将生成的jar包放在target目录下
+

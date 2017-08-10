@@ -600,4 +600,10 @@ __init__ ( self [,args...] )
     ```
     pip install -r requirements.txt
     ```  
+    
+## python使用国内镜像
+```
+pip  install --index https://pypi.mirrors.ustc.edu.cn/simple/ pandas  
+```
+
 
