@@ -1,4 +1,5 @@
 #### 使用
+![](http://on90cf3na.bkt.clouddn.com/17-8-21/64885926.jpg)
  - 常见命令
  
 	- git add <file>             //把文件添加到本地仓库（即将该文件纳入git管理）
