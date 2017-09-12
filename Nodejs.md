@@ -1,7 +1,11 @@
-> 说明：node.js是构建于JavaScript之上的，事件触发和异步的，专为DIRT（Data-intensive real-time）数据密集实时型程序设计的。
+## 前言
+node.js是构建于JavaScript之上的，事件触发和异步的，专为DIRT（Data-intensive real-time）数据密集实时型程序设计的。
 
+## 安装
+版本地址：[https://nodejs.org/dist/](https://nodejs.org/dist/)
+进入上面的网址选择版本进行安装
 
-##技术栈
+##技术栈 
 - 框架
     - [express](http://www.expressjs.com.cn)
     - [koa](http://koajs.com)
@@ -191,3 +195,4 @@ supervisor会监听当前目录下node和js后缀的文件，当这些文件发�
 ![](https://img1.doubanio.com/view/ark_works_pic/common-largeshow/public/199732927.jpg)
 
 `当前目录` -> `node_modules目录` -> `父目录的node_modules目录` -> `NODE_PATH目录`
+

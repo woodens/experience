@@ -166,7 +166,7 @@ projectName
 	- delete()
 	
 
-# django view
+## django view
 1. 处理请求的两种方式
 	- 函数处理请求
 		
