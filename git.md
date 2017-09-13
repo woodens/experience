@@ -87,7 +87,8 @@
     ```
 - 同一个项目上传到多个git仓库
 
-    > 在.git目录中的config文件中添加多个url=https://xxx.com/xx.git的路径即可
+    > 在.git目录中的config文件中添加多个url=https://xxx.com/xx.git的路径即可，此方法即命令行执行
+    git remote set-url --add origin https://xxx.com/xx.git
 - fatal: Unable to create 'v:/path/to/files/.git/index.lock': File exists.
     > 命令删除sudo rm -f ./.git/index.lock
      
@@ -110,3 +111,4 @@
     + `git push origin --tags` 推送全部未推送过的本地标签
     + `git tag -d <tagname>` 删除本地标签
     + `git push origin :refs/tags/<tagname>` 删除一个远程标签  (若是要删除一个远程的标签，需要先删除本地标签才能删除远程标签)
+

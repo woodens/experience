@@ -18,6 +18,63 @@ projectName
 	manage.py
 ```
 
+## 常见命令
+1. 新建 project
+
+    ```
+    django-admin.py startproject project_name
+    ```
+2. 新建 app
+
+    ```
+    python manage.py startapp app_name
+    或 django-admin.py startapp app_name
+    ```
+    将多个app放在同一个apps文件夹中，这样会比较清楚规范
+    - 项目右键new–>python package->apps
+    - apps的文件夹右击–>选择mark directory as—>选择sources root->点击run
+    - 在setting.py中添加设置 `sys.path.insert(0,os.path.join(BASE_DIR,'apps')) `
+    
+3. 创建数据库表
+
+    ```
+    # 1. 创建更改的文件
+    python manage.py makemigrations
+    # 2. 将生成的py文件应用到数据库
+    python manage.py migrate
+    ```
+4. 创建超级管理员
+
+    ```
+    python manage.py createsuperuser
+    # 用户名和密码必填
+    # 修改 用户密码可以用：
+    python manage.py changepassword username
+    ```
+5. 导出数据 导入数据
+
+    ```
+    python manage.py dumpdata appname > appname.json
+    python manage.py loaddata appname.json
+    ```
+6. Django 项目环境终端
+
+    ```
+    python manage.py shell
+    ```
+    与直接使用python进入shelld的区别是你可以在这个 shell 里面调用当前项目的 models.py 中的 API
+7. 数据库命令行
+    
+    ```
+    python manage.py dbshell
+    ```
+    
+8. 更多命令
+    
+    ```
+    终端输入 python manage.py 可以看到详细的列表
+    ```
+
 ## django 语言支持
 1.7之前，需要设置`LANGUAGE_CODE = 'zh_CN'`
 在1.7以上，django的中文需要设置`LANGUAGE_CODE = 'zh_Hans'`
@@ -265,7 +322,7 @@ projectName
 - `pyenv`的使用
 
 	```
-	pyenv versons：查看当前pyenv下的所有python版本.
+	pyenv versions：查看当前pyenv下的所有python版本.
 	pyenv install --list：列出所有可以下载的python版本.
 	pyenv install 版本号：下载并安装python版本，eg：python install 2.7.12，版本号可根据上一条命令获取.
 	python global 版本号：切换当前默认的python版本，全局有效.
