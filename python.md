@@ -208,6 +208,17 @@ if x:
 	for name in names:
 	    print(name)
 	```
+	循环字典
+	
+	```python
+	d = {
+	   'a':1,
+	   'b':2
+	}
+	for (key,value) in d.items():
+	   print key,':',value
+	```
+	
 	Python提供一个range()函数，可以生成一个整数序列
 	
 	```python
@@ -349,9 +360,9 @@ for x in it:
 		printinfo( age=50, name="miki" )
 		printinfo( name="miki" )
  		```
- 	- **不定长参数**
+ 	- **非关键字可变参数**
  		
- 		可以传入比声明时更多的参数，用*变量名存放未声明的参数
+ 		可以传入比声明时更多的参数，用*变量名存放未声明的参数，在函数内部自动转换为tuple
  		
  		```python
  		def printinfo( arg1, *vartuple ):
@@ -364,7 +375,9 @@ for x in it:
 		printinfo( 10 )
 		printinfo( 70, 60, 50 )
  		```
- 
+    - **关键字可变参数**
+        传入带有参数名的参数，用**kw变量名存放未声明的参数，在函数内部自动转换为dict
+    
 3. 参数传递
  	
  	- **不可变参数传递**
@@ -558,7 +571,8 @@ except Networkerror,e:
 ## 面向对象
 
 以`_`开头的变量是protected，只能本身和子类进行访问，不能 `from module import *`<br>
-以`__`开头的变量或方法都是私有的，只能本身进行访问
+以`__`开头的变量或方法都是私有的，只能本身进行访问<br>
+以双下划线开头，并且以双下划线结尾的，是特殊变量，特殊变量是可以直接访问的
 
 ### 构造函数
 
@@ -587,7 +601,34 @@ __init__ ( self [,args...] )
 - `__del__( self )`  删除对象
 - `__repr__( self )` 转换为解释器可以读取的形式
 - `	__str__( self )` 用于将值转换为利于人阅读的形式
+    
+    ```python
+    class Student(object):
+        def __init__(self, name):
+            self._name=name
+        def __str__(self):
+            return 'student object(name= %s)' % self.name
+        __repr__ = __str__ #偷懒 将两者相等
+    ```   
 - `__cmp__ ( self, x )`  对象比较
+
+@property与@属性.setter
+@property是将getter方法变成属性，@属性.setter是将setter方法变成属性赋值
+
+```python
+class Student(object):
+    @property
+    def score(self):
+        return self._score
+        
+    @score.setter
+    def score(self, value):
+        self._score = value
+
+s = Student()
+s.score = 6
+s.score  # 6
+```
 
 ## Python使用requirements.txt安装类库
 - 生成安装所需类库
