@@ -359,4 +359,8 @@ STATICFILES_DIRS = (                    # 静态文件夹
 
  > 解决办法： 在class上加注解@method_decorator(csrf_exempt, name='dispatch')
 
+- 怎么获取页面上POST上来的数组
+
+ > request.POST.getlist('ids[]', []),不要忘记[]
+
 

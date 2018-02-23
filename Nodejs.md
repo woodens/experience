@@ -145,7 +145,12 @@ semver 格式：`主版本号.次版本号.修订号。`版本号递增规则如
     npm config set save-exact true
     ```
     这样每次 npm i xxx --save 的时候会锁定依赖的版本号，相当于加了 --save-exact 参数
-
+### npm update <name>
+更新包
+### npm remove <name>
+删除包
+### npm ls
+列出当前安装的所有包
 ### npm scripts
 可以将需要执行的命令简化为简单地单词直接执行```npm run XXX```进行操作
 ### npm shrinkwrap
