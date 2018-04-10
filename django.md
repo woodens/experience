@@ -270,73 +270,7 @@ projectName
 	class CourseAddView(LoginRequiredMixin, View):
 		...
 	``` 
-	
-## django虚拟环境`virtualenv`与`virtualenvwrapper`
-
-1. 虚拟virtualenv  与virtualenvwrapper
-2. 创建虚拟环境
-
-	```
-	mkvirtualenv 虚拟环境目录
-	```
-	> 创建完成后自动进入虚拟环境 
-	
-3. 退出虚拟环境
-
-	```
-	deactivate
-	```
-	
-4. 查看已经建立的虚拟环境
-
-	```
-	workon
-	```
-5. 进入某个虚拟环境
-
-	```
-	workon 虚拟环境目录
-	```
-6. 虚拟环境添加包
-
-	> 进入虚拟环境后使用pip进行操作，操作方法参照pip命令
-	
-	
-## 使用pyenv及pyenv-virtualenvwrapper
-
-1. 安装`pyenv`及`pyenv-virtualenvwrapper`
-
-	命令行执行
-
-	```
-	brew install pyenv 、brew install pyenv-virtualenv
-	```
-	安装完在`~`目录下的`.bash_profile`文件加上以下内容
-	
-	```
-	export PYENV_ROOT=/usr/local/var/pyenv
-	if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-	if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi	
-	```
-	>说明：PYENV_ROOT为pyenv的环境目录 可自行创建目录
-- `pyenv`的使用
-
-	```
-	pyenv versions：查看当前pyenv下的所有python版本.
-	pyenv install --list：列出所有可以下载的python版本.
-	pyenv install 版本号：下载并安装python版本，eg：python install 2.7.12，版本号可根据上一条命令获取.
-	python global 版本号：切换当前默认的python版本，全局有效.
-	python local 版本号：切换当前默认的python版本，当前用户有效.
-	```
-- `pyenv-virtualenv`的使用
-
-	```
-	pyenv virtualenv 2.7.12 python2_7_12：创建名为python2_7_12的虚拟环境，对应的版本为2.7.12
-	pyenv activate python2_7_12：切换到python2_7_12虚拟环境
-	pyenv deactivate：退回系统环境
-	pyenv virtualenvs 显示所有虚拟环境
-	```
-	
+		
 ## django 静态文件处理
 
 ```
