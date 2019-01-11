@@ -25,8 +25,8 @@
 
 前端技术
 
-*  [html](https://github.com/woodens/experience/blob/master/html.md): 前端开发的三大基建之一，相当于肉身
-*  [css语法](https://github.com/woodens/experience/blob/master/css.md)：前端开发的三大基建之一，相当于衣服、门面
+*  [html](https://github.com/woodens/experience/blob/master/html.md): 前端开发的三大基建之一，相当于骨架
+*  [css语法](https://github.com/woodens/experience/blob/master/css.md)：前端开发的三大基建之一，相当于外观
 *  [js](https://github.com/woodens/experience/blob/master/js.md): 前端开发的三大基建之一，相当于技能、动作
 *  [jquery插件开发规范](https://github.com/woodens/experience/blob/master/jquery%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83.md): 操作dom的利器
 *  [sea.js语法](https://github.com/woodens/experience/blob/master/sea.js%E8%AF%AD%E6%B3%95.md)

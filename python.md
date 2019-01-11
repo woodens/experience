@@ -706,10 +706,11 @@ pip  install --index https://pypi.mirrors.ustc.edu.cn/simple/ pandas
 - `pyenv-virtualenv`的使用
 
 	```
-	pyenv virtualenv 2.7.12 python2_7_12：创建名为python2_7_12的虚拟环境，对应的版本为2.7.12
-	pyenv activate python2_7_12：切换到python2_7_12虚拟环境
+	pyenv virtualenv <2.7.12> <python2_7_12>：创建名为python2_7_12的虚拟环境，对应的版本为2.7.12
+	pyenv activate <python2_7_12>：切换到python2_7_12虚拟环境
 	pyenv deactivate：退回系统环境
 	pyenv virtualenvs 显示所有虚拟环境
+	pyenv uninstall <python2_7_12> 删除虚拟环境python2_7_12
 	```
 
 
